@@ -9,8 +9,13 @@ const config = require('./config');
 const app = express();
 // const router = express.Router();
 
+require('dotenv').config();
+
 //conecta ao banco
-mongoose.connect(config.connectionString);
+//mongoose.connect(config.connectionString);
+console.log('process.env.CONNECTION_STRING ' + process.env.CONNECTION_STRING);
+mongoose.connect(process.env.CONNECTION_STRING);
+//mongoose.connect(process.env.CONNECTION_STRING);
 // mongoose.connect('mongodb://localhost:27017/exampleDb')
 
 //carrega os models

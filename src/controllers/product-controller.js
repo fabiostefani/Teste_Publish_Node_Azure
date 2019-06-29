@@ -5,7 +5,7 @@
 const ValidatorProduct = require('../validators/product-validador');
 const repository = require('../repositories/product-repository');
 const azure = require('azure-storage');
-const config = require('../config');
+//const config = require('../config');
 const guid = require('guid');
 const statusCode = require('../infra/retStatusCode');
 
@@ -71,7 +71,7 @@ exports.post = async(req, res, next) => {
 
 
     try {
-        const blobSvc = azure.createBlobService(config.containerConnectionString);
+        const blobSvc = azure.createBlobService(process.env.CONTAINER_CONNECTION_STRING);
 
         let filename = guid.raw().toString() + '.jpg';
         let rawdata = req.body.image;
